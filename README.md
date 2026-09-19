@@ -3,7 +3,36 @@ THIS PROJECT IS MADE FOR PEOPLES WHO ARE WILLING TO MAKE PROGRESS IN THEIR <br>P
 
 
 # 🏗️ Architecture:
-![Architecture Diagram](diagram.png)
+
+```mermaid
+flowchart TD
+    User["User"] -->|uses| Presentation["Presentation Layer - Tkinter Interface (quiz.py)"]
+    Presentation -->|dispatches| Orchestration["App Orchestration - AttentionApp Controller (quiz.py)"]
+
+    subgraph ContentStores["Content Stores"]
+        TipsData[("Tips Data (tips.json)")]
+        QuizQuestions[("Quiz Questions (quiz_questions.json)")]
+        PDAQuestions[("PDA Questions (PDA.json)")]
+    end
+
+    subgraph AssessmentStages["Assessment Stages"]
+        TipsBrowser["Tips Browser (quiz.py)"]
+        GeneralQuiz["General Quiz (quiz.py)"]
+        PDAEvaluation["PDA Evaluation (quiz.py)"]
+        EvalResults["Evaluation Results (quiz.py)"]
+
+        GeneralQuiz -->|produces| EvalResults
+        PDAEvaluation -->|produces| EvalResults
+    end
+
+    Orchestration -->|reads| TipsData
+    Orchestration -->|reads| QuizQuestions
+    Orchestration -->|reads| PDAQuestions
+
+    Orchestration -->|opens| TipsBrowser
+    Orchestration -->|starts| GeneralQuiz
+    Orchestration -->|starts| PDAEvaluation
+```
 
 
 # 💻 Tech Stack:
