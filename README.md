@@ -2,6 +2,10 @@
 THIS PROJECT IS MADE FOR PEOPLES WHO ARE WILLING TO MAKE PROGRESS IN THEIR <br>PERSONALITY-DYNAMICS<br>
 
 
+# 🏗️ Architecture:
+![Architecture Diagram](diagram.png)
+
+
 # 💻 Tech Stack:
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
